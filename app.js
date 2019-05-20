@@ -3,6 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/quizapp', {useNewUrlParser: true}, (err) => {
+  err ? console.log('db not connected') : console.log('db connected')
+});
+mongoose.set('useCreateIndex', true);
+
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -18,6 +28,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}))
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
