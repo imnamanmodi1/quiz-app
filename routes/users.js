@@ -43,10 +43,11 @@ User.findOne({email: req.body.email}, (err, user) => {
 
 // handles POST requests of login form
 router.post('/login', function(req, res, next) {
-  User.findOne({email: req.body.email}, (err, user) => {
+  User.findOne({username: req.body.username}, (err, user) => {
     if(err) throw next(err);
     if (!user) {
       return res.status(400).redirect('/users/login')
+      console.log('user not found')
     }
     if(user) {
       user.comparePassword(req.body.password, (err, isMatch) => {
@@ -56,7 +57,7 @@ router.post('/login', function(req, res, next) {
           console.log(isMatch)
           console.log('Login successfull')
           req.session.user = user._id;
-          return res.redirect('/users/dashboard')
+          return res.redirect('/dashboard')
         }
         if(!isMatch) {
           res.status(400).redirect('/users/login')
