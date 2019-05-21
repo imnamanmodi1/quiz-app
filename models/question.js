@@ -11,7 +11,7 @@ var quizSchema = new Schema({
         required: true
     },
     tags: [String],
-    points: Number,
+    score: Number,
     option1:{
         type: String,
         required: true

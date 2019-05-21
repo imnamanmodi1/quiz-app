@@ -16,7 +16,8 @@ var userSchema = new Schema({
     password: {
         type: String,
         required: true,
-    }
+	},
+	score: Number,
 },{timestamps: true});
 
 userSchema.pre('save', function(next) {
