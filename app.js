@@ -17,6 +17,7 @@ mongoose.set('useCreateIndex', true);
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var apiRouter = require('./routes/api/v1');
+var dashRouter = require('./routes/dashboard');
 
 var app = express();
 
@@ -41,6 +42,7 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/v1', apiRouter);
+app.use('/dashboard', dashRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

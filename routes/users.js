@@ -16,10 +16,10 @@ router.get('/register', function(req, res, next) {
 });
 
 
-// rendered dashboard
-router.get('/dashboard', function(req, res, next) {
-  res.render('dashboard')
-});
+// // rendered dashboard
+// router.get('/dashboard', function(req, res, next) {
+//   res.render('dashboard')
+// });
 
 
 // handle registration form's POST requests from the /users/register slug
