@@ -5,21 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Create New Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/quiz-form.css"/>
 </head>
 <body>
+    <center>
     <form action="/dashboard/create" method="POST">
-        <h2>Create your Quiz</h2>
-        <input type="text" placeholder="Enter title" name="title">
-        <input type="text" placeholder="Question Description" name="description">
-        <input type="text" name="option1">
-        <input type="text" name="option2">
-        <input type="text" name="option3">
-        <input type="text" name="option4">
+        <h1>Create Your Quiz</h1>
+        <input type="text" placeholder="Enter Question title" name="title">
+        <input type="text" placeholder="Enter Question Description" name="description">
+            <input type="text" placeholder="Enter Option 1" name="option1">
+            <input type="text" placeholder="Enter Option 2" name="option2">
+            <input type="text" placeholder="Enter Option 3" name="option3">
+            <input type="text" placeholder="Enter Option 4" name="option4">
         <input type="text" placeholder="input tags" name="tags">
         <input type="number" placeholder="points" name="score">
         <input type="text" placeholder="Correct option" name="correct" list="options">
-        
-        <button type="submit">Submit Question</button>
+        <button class="btn btn-success" type="submit">Submit Question</button>
     </form>
+    </center>
 </body>
 </html>
