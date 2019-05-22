@@ -10,7 +10,10 @@ var quizSchema = new Schema({
         type: String,
         required: true
     },
-    tags: [String],
+    category: {
+        type: String,
+        required: true
+    },
     score: Number,
     option1:{
         type: String,

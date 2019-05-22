@@ -8,13 +8,21 @@ router.get('/', function(req, res, next) {
     res.render('dashboard')
 });
 
+// renders quiz form
 router.get('/create', function (req, res, next) {
     res.render('createForm')
 });
 
+// handles quiz creation on dashboard/choose-quiz route
+router.get('/choose-quiz', (req, res, next) => {
+    res.render('chooseQuiz')
+})
+
+
+// handles quiz creation on dashboard/create route
 router.post('/create', function (req, res, next) {
-    var tags = req.body.tags.split(',');
-    req.body.tags = tags;
+    // var tags = req.body.tags.split(',');
+    // req.body.tags = tags;
     var correctAnswer = req.body.correct;
     var stringAnswer;
     if (correctAnswer === "1") {

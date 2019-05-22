@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Choose Quiz Category</title>
+</head>
+<body>
+    <!-- Main Wrapper -->
+    <main class="main">
+        <!-- Wrapper Starts -->
+        <div class="wrapper">
+            <!-- heading starts -->
+            <h1>
+                Choose Quiz <span class="yellow">Category</span> 
+            </h1>
+            <!-- Table Starts -->
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Quiz Category</th>
+                    </tr>
+                    <% for (var i = 0; i < data.length;  i++) { %>
+                        <tr>
+                        <% for (var z = 0; z < data.quiz.tags.length;  z++) { %>    
+                        <td><%= data[z].quiz.tags %></td>
+                        </tr>    
+                        <% } %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
