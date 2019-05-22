@@ -16,20 +16,23 @@
                 Choose Quiz <span class="yellow">Category</span> 
             </h1>
             <!-- Table Starts -->
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <th>Quiz Category</th>
-                    </tr>
-                    <% for (var i = 0; i < data.length;  i++) { %>
+            <table class = "table">
+                    <tbody>
                         <tr>
-                        <% for (var z = 0; z < data.quiz.tags.length;  z++) { %>    
-                        <td><%= data[z].quiz.tags %></td>
+                        <th>Quiz Category</th>
+                        </tr>
+                    
+                        <% for (var i = 0; i < data.category.length;  i++) { %>
+                        <tr>
+                        <td><%= data.category[i] %></td>
                         </tr>    
                         <% } %>
-                </tbody>
-            </table>
+                <!-- table body ends -->    
+                    </tbody>
+                <!-- table ends -->
+                 </table>
         </div>
     </main>
+    <script src='/javascripts/main.js'
 </body>
 </html>

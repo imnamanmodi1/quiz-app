@@ -1,7 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var Quiz = require('../models/question');
+// var catAPI = require('./api/v1');
+var fetch = require('node-fetch');
 
+
+const fetchAPI =(cb)=>{
+	fetch('http://localhost:3000/api/v1/quiz/category').then(res => res.json()).then(data => {
+			cb(data)
+	})
+} 
 
 // renders dashboard
 router.get('/', function(req, res, next) {
@@ -15,7 +23,10 @@ router.get('/create', function (req, res, next) {
 
 // handles quiz creation on dashboard/choose-quiz route
 router.get('/choose-quiz', (req, res, next) => {
-    res.render('chooseQuiz')
+    fetchAPI((data) => {
+        console.log(data, " ........data")
+        res.render('chooseQuiz', {data: data})
+    })
 })
 
 
