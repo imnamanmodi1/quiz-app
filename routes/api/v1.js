@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require('../../models/user');
 var Quiz = require('../../models/question')
 var blankArr = [];
+var uniqueArray = [];
 
 
 // to expose all users in the API
@@ -42,11 +43,25 @@ router.get('/quiz/category', (req,res,next) => {
         if(err) return next(err);
         for(i=0; i<quizData.length; i++) {
             var allCat = quizData[i].category;
-            blankArr.push(allCat)            
+            blankArr.push(allCat);          
         }
-        console.log(blankArr);
-        // blankArr.split(",")
-        res.json({category: blankArr})
+        var catArr = blankArr;  //cat display variable
+
+        // function to only have unique values in array
+        function getUnique(catArr){
+            // Loop through array values
+            for(i=0; i < catArr.length; i++){
+                if(uniqueArray.indexOf(catArr[i]) === -1) {
+                    uniqueArray.push(catArr[i]);
+                }
+            }
+            return uniqueArray;
+        }
+        // function getUnique executed
+        getUnique(catArr);
+        blankArr = [];
+        console.log(uniqueArray);
+        res.json({category: uniqueArray})
     })
 })
 

@@ -5,34 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Choose Quiz Category</title>
+    <link rel="stylesheet" href="/stylesheets/choose-quiz.css">
 </head>
 <body>
+    <!-- centering whole body -->
+    <center>
     <!-- Main Wrapper -->
     <main class="main">
+            <h1>
+                    Choose Quiz <span class="yellow">Category</span> 
+            </h1>
         <!-- Wrapper Starts -->
         <div class="wrapper">
             <!-- heading starts -->
-            <h1>
-                Choose Quiz <span class="yellow">Category</span> 
-            </h1>
-            <!-- Table Starts -->
-            <table class = "table">
-                    <tbody>
-                        <tr>
-                        <th>Quiz Category</th>
-                        </tr>
-                    
-                        <% for (var i = 0; i < data.category.length;  i++) { %>
-                        <tr>
-                        <td><%= data.category[i] %></td>
-                        </tr>    
-                        <% } %>
-                <!-- table body ends -->    
-                    </tbody>
-                <!-- table ends -->
-                 </table>
+                 <% for (var i = 0; i < data.category.length;  i++) { %>
+                    <a class="link" href="/quiz/category/<%= data.category[i] %>"><span><%= data.category[i] %></span></a> 
+                <% } %>
         </div>
     </main>
-    <script src='/javascripts/main.js'
+    <script src='/javascripts/main.js'></script>
+    </center>
 </body>
 </html>
