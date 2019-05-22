@@ -2,17 +2,27 @@
 <html>
   <head>
     <title>Registration Form</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/register-form.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   </head>
   <body>
     <form method="POST" action="/users/register">
-        <label>Email</label>
-            <input name="email" type="text">
-        <label>Username</label>
-            <input name="username" type="text">
-        <label>Passsword</label>
-            <input name="password" type="password">
-        <button type="submit">Register</button>
+      <div class="login-box">
+      <h1>Register User</h1>
+        <div class="textbox">
+            <i class="fas fa-user-plus"></i>
+            <input name="email" placeholder="Email" type="text">
+        </div>
+        <div class="textbox">
+            <i class="fas fa-file-signature"></i>
+            <input name="username" placeholder="Username" type="text">
+        </div>
+        <div class="textbox">
+            <i class="fas fa-user-lock"></i>
+            <input name="password" placeholder="Password" type="password">
+        </div>    
+        <button class="btn" type="submit">Register</button>
+      </div>
     </form>
   </body>
 </html>

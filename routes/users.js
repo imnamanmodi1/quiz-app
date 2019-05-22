@@ -37,7 +37,7 @@ User.findOne({email: req.body.email}, (err, user) => {
   }, (err, user) => {
     if(err) return next(err);
     console.log('registration of user is successful')
-    res.status(201).redirect('/users/dashboard')
+    res.status(201).redirect('/users/login')
   })
 });
 
