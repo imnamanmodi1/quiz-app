@@ -13,12 +13,19 @@
     <center>
     <form action="/dashboard/create" method="POST">
         <h1>Create Your Quiz</h1>
+        <label class="form-label">Title</label>
         <input type="text" placeholder="Enter Question title" name="title">
+        <label class="form-label">Description</label>
         <input type="text" placeholder="Enter Question Description" name="description">
-            <input type="text" placeholder="Enter Option 1" name="option1">
-            <input type="text" placeholder="Enter Option 2" name="option2">
-            <input type="text" placeholder="Enter Option 3" name="option3">
-            <input type="text" placeholder="Enter Option 4" name="option4">
+        <label class="form-label">Option 1</label>
+        <input type="text" placeholder="Enter Option 1" name="option1">
+        <label class="form-label">Option 2</label>
+        <input type="text" placeholder="Enter Option 2" name="option2">
+        <label class="form-label">Option 3</label>
+        <input type="text" placeholder="Enter Option 3" name="option3">
+        <label class="form-label">Option 4</label>
+        <input type="text" placeholder="Enter Option 4" name="option4">
+        <label class="form-label">Category</label>
         <input type="text" placeholder="choose category" name="category" list="tags">
         <datalist id="tags">
             <option value="Javascript"></option>
@@ -26,8 +33,15 @@
             <option value="Games"></option>
             <option value="Sports"></option>
         </datalist>
+        <label class="form-label">Score for right answer</label>
         <input type="number" placeholder="points" name="score">
-        <input type="text" placeholder="Correct option" name="correct" list="options">
+        <label class="form-label">Correct Option</label>
+        <div class="row">
+            <input class="first-row" type="radio" name="correct" value="1"><span>1</span>
+            <input class="first-row"type="radio" name="correct" value="2"><span>2</span>
+            <input class="first-row" type="radio" name="correct" value="3"><span>3</span>
+            <input class="first-row" type="radio" name="correct" value="4"><span>4</span>
+        </div>
         <button class="btn btn-success" type="submit">Submit Question</button>
     </form>
     </center>

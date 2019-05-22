@@ -24,22 +24,11 @@ router.get('/quiz', (req,res,next) => {
     });
 });
 
-// returns all categories
-// router.get('/quiz/category', (req,res,next) => {
-//     Quiz.find({category: "Personal"}, (err, category) => {
-//         if(err) return next(err);
-//         res.locals.category = category;
-//         for(i=0; i<category.length; i++) {
-//             var onlyCat = category[i].category
-//         }
-//         res.json({category: onlyCat});
-//     })
-// })
 
-
+// exposes all categories in an Array
 router.get('/quiz/category', (req,res,next) => {
     Quiz.find({}, (err, quizData) => {
-        console.log(quizData);
+        // console.log(quizData);
         if(err) return next(err);
         for(i=0; i<quizData.length; i++) {
             var allCat = quizData[i].category;
@@ -60,8 +49,23 @@ router.get('/quiz/category', (req,res,next) => {
         // function getUnique executed
         getUnique(catArr);
         blankArr = [];
-        console.log(uniqueArray);
+        // console.log(uniqueArray);
         res.json({category: uniqueArray})
+    })
+})
+
+// added dynamic API data routing based on the category of the question
+// renders any category data to 
+// /quiz/:category renders the specific category targeted in :category section of the URL
+router.get('/quiz/:category', (req, res, next) => {
+    // console.log(req.params.category)
+    var category = req.params.category;
+    console.log(category, "category");
+    Quiz.find({category: category}, (err, specificCategory) => {
+        if(err) return next(err);
+        res.locals.specificCategory = specificCategory;
+        // console.log(specificCategory);
+        res.json({categorySortedData: specificCategory});
     })
 })
 

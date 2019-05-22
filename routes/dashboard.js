@@ -21,10 +21,20 @@ router.get('/create', function (req, res, next) {
     res.render('createForm')
 });
 
-// handles quiz creation on dashboard/choose-quiz route
+router.get('/create/category', function (req, res, next) {
+    res.render('displayQuiz')
+});
+
+// handles get request on dashboard/choose-quiz route
 router.get('/choose-quiz', (req, res, next) => {
     fetchAPI((data) => {
-        console.log(data, " ........data")
+        console.log(data, " ........quizdata")
+        // var blankData = data; 
+        // console.log(data, " ........blankdata")
+        // for(i=0; i< blankData.length; i++) {
+        //     data.category[i] = blankData.category[i].toUpperCase();
+        //     console.log(data, ".........dataafter")
+        // }
         res.render('chooseQuiz', {data: data})
     })
 })
@@ -35,6 +45,10 @@ router.post('/create', function (req, res, next) {
     // var tags = req.body.tags.split(',');
     // req.body.tags = tags;
     var correctAnswer = req.body.correct;
+    var upperCaseCategory = req.body.category.toLowerCase();
+    console.log(upperCaseCategory);
+    req.body.category = upperCaseCategory;
+    // var lowerCaseCategory = upperCaseCategory.toLowerCase();
     var stringAnswer;
     if (correctAnswer === "1") {
         req.body.correct = req.body.option1
@@ -54,5 +68,7 @@ router.post('/create', function (req, res, next) {
         res.redirect('/dashboard/create')
     })
 });
+
+
 
 module.exports = router;

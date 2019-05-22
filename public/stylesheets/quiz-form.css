@@ -70,3 +70,18 @@ h1{
     font: 50px "Lucida Grande", Helvetica, Arial, sans-serif;
     font-weight: 800;
 }
+
+.form-label{
+    color:white;
+	font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+	text-align: left;
+    /* font-weight: 800; */
+}
+
+.row{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	justify-content: space-around;
+	max-width: 2rem;
+	color: white;
+}
