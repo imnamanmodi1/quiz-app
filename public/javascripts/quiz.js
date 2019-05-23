@@ -10,13 +10,24 @@ const counter = document.getElementById("counter");
 const timeGauge = document.getElementById("timeGauge");
 const progress = document.getElementById("progress");
 const scoreDiv = document.getElementById("scoreContainer");
+let questions = [];
+var reqURL = window.location.href;
+var splittedArr = reqURL.split("/");
+var category = splittedArr[4];
+// var category = "new"
 
-
-const apiUrl = 'http://localhost:3000/api/v1/quiz';
-
-const fetchAPI =(cb)=>{
-    fetch(apiUrl).then(res => res.json()).then(data => {
-        console.log(data);
+// fetching all quiz based on the category
+const fetchAPI = async (cb)=>{
+    fetch(`http://localhost:3000/api/v1/quiz/${category}`).then(res => res.json()).then(data => {
         cb(data)
     })
 } 
+
+
+fetchAPI((data) => {
+    console.log(data);
+    // console.log(data.quiz[0], "data.....")
+    questions = data;
+});
+
+console.log(questions, "........questions")
