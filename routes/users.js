@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var bcrypt = require('bcrypt');
+var userNameArr = [];
 
 // rendered login form
 router.get('/login', function(req, res, next) {
@@ -44,6 +45,7 @@ User.findOne({email: req.body.email}, (err, user) => {
 // handles POST requests of login form
 router.post('/login', function(req, res, next) {
   User.findOne({username: req.body.username}, (err, user) => {
+    console.log(req.body.username, "is logged in...");
     if(err) throw next(err);
     if (!user) {
       return res.status(400).redirect('/users/login')
@@ -57,7 +59,9 @@ router.post('/login', function(req, res, next) {
           console.log(isMatch)
           console.log('Login successfull')
           req.session.user = user._id;
-          return res.redirect('/dashboard')
+          var userLoggedIn = req.body.username;
+          console.log(userLoggedIn)
+          return res.redirect('/dashboard');
         }
         if(!isMatch) {
           res.status(400).redirect('/users/login')
@@ -67,6 +71,38 @@ router.post('/login', function(req, res, next) {
   })
 });
 
+// display user route
 
+// router.get('/profile', function (req, res) {
+//   User.find({}, (err, userlist)=>{
+//     if(err) return next(err);
+//     res.render('userDisplay', {allusers: userlist})
+//   })
+// })
+
+router.get('/bloguser', (req, res, next)=>{
+  if(req.session && req.session.user._id){
+      Blog.find({}, (err, userbloglist)=>{
+          if(err) return next(err);
+          res.render('bloguser', {blogitems: userbloglist})
+      })
+  }
+  else{
+      res.render('blogdisplay')
+  }
+})
+
+router.get('/profile', (req, res, next)=>{
+  // console.log(req.session.user)
+  if(req.session && req.session.user){
+      User.find({_id: req.session.user}, (err, userData)=>{
+          if(err) return next(err);
+          res.render('userDisplay', {user: userData})
+      })
+  }
+  else{
+      res.send('user not found, fuck off!')
+  }
+})
 
 module.exports = router;
