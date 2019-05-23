@@ -6,6 +6,9 @@ var quizSchema = new Schema({
         type: String,
         required: true
     },
+    image: {
+        data: Buffer, imageType: String, iName: String 
+    },
     description:{
         type: String,
         required: true
