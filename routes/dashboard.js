@@ -12,12 +12,22 @@ const fetchAPI =(cb)=>{
 
 // renders dashboard
 router.get('/', function(req, res, next) {
+    if(req.session && req.session.user){
     res.render('dashboard')
+    }
+    else{
+        res.send('first login');
+    }
 });
 
 // renders quiz form
 router.get('/create', function (req, res, next) {
+    if(req.session && req.session.user){
     res.render('createForm')
+    }
+    else{
+        res.send('first login');
+    }
 });
 
 // renders displayQuiz on the pages
@@ -42,7 +52,6 @@ router.get('/:category/start', (req,res, next) => {
         res.render('displayQuiz', {categorySortedData: oneCategory})
     })
 })
-
 
 
 // handles quiz creation on dashboard/create route
