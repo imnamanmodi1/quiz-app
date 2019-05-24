@@ -103,7 +103,7 @@ router.post('/login', function(req, res, next) {
 //   })
 // })
 
-
+// display onlylogged in user's info
 router.get('/profile', (req, res, next)=>{
   // console.log(req.session.user)
   if(req.session && req.session.user){
@@ -115,6 +115,15 @@ router.get('/profile', (req, res, next)=>{
   }
   else{
       res.send('user not found, fuck off!')
+  }
+})
+
+// route handling logout
+
+router.get('/logout', (req, res)=>{
+  if (req.session) {
+      req.session.destroy();
+      res.render('loginForm')
   }
 })
 
