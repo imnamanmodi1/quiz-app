@@ -85,7 +85,6 @@ router.post('/login', function(req, res, next) {
           req.session.user = user._id;
           var userLoggedIn = req.body.username;
           console.log(userLoggedIn)
-          return res.redirect('/dashboard');
         }
         if(!isMatch) {
           res.status(400).redirect('/users/login')

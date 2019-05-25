@@ -20,6 +20,29 @@
               <a href="http://localhost:3000/dashboard/choose-quiz" class="card-link">Take Quiz</a>
               <a href="http://localhost:3000/dashboard/create" class="card-link">Create Quiz</a>
             </div>
+        <div>
+            <h3>LeaderBoard</h1>
+            
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                    <th class="head" style="color:white;" scope="col">#</th>
+                    <th class="head" style="color:white;" scope="col">Username</th>
+                    <th class="head" style="color:white;" scope="col">Email</th>
+                    <th class="head" style="color:white;" scope="col">Score</th>
+                    </tr>
+                </thead>
+                <% for (var i = 0; i < user.length;  i++) { %>
+                <tbody>
+                    <tr>
+                    <td style="color:white;" scope="row"><%= i %></th>
+                    <td><%= user[i].username %></td>
+                    <td><%= user[i].email %></td>
+                    <td><%= user[i].score %></td>
+                    </tr>
+                </tbody>
+                <% } %>
+            </table>
         </div>
     </center>
 </body>
