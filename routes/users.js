@@ -42,6 +42,29 @@ User.findOne({email: req.body.email}, (err, user) => {
   })
 });
 
+// route for editing user
+router.get('/:id/edit', (req, res, next)=>{
+  var id = req.params.id;
+  console.log(id);
+  User.findById(id, (err, user)=>{
+    if(err) return next(err);
+      res.render('userEdit', {user: user})
+  })
+})
+
+
+// route for updating the user
+router.post('/:id/update', (req, res, next)=>{
+  var id = req.params.id;
+  console.log(id)
+  User.findByIdAndUpdate(id, req.body, {new: true}, (err, user)=>{
+    if(err) return next(err);
+    res.redirect('/users/profile');
+  })
+})
+
+// deletes the user and redirects it to register form
+
 // handles POST requests of login form
 router.post('/login', function(req, res, next) {
   User.findOne({username: req.body.username}, (err, user) => {
@@ -80,21 +103,11 @@ router.post('/login', function(req, res, next) {
 //   })
 // })
 
-router.get('/bloguser', (req, res, next)=>{
-  if(req.session && req.session.user._id){
-      Blog.find({}, (err, userbloglist)=>{
-          if(err) return next(err);
-          res.render('bloguser', {blogitems: userbloglist})
-      })
-  }
-  else{
-      res.render('blogdisplay')
-  }
-})
-
+// display onlylogged in user's info
 router.get('/profile', (req, res, next)=>{
   // console.log(req.session.user)
   if(req.session && req.session.user){
+    console.log(req.session.user)
       User.find({_id: req.session.user}, (err, userData)=>{
           if(err) return next(err);
           res.render('userDisplay', {user: userData})
@@ -102,6 +115,15 @@ router.get('/profile', (req, res, next)=>{
   }
   else{
       res.send('user not found, fuck off!')
+  }
+})
+
+// route handling logout
+
+router.get('/logout', (req, res)=>{
+  if (req.session) {
+      req.session.destroy();
+      res.render('loginForm')
   }
 })
 
