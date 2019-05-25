@@ -58,8 +58,9 @@ function mainQues(questions){
         let q = newQuestions[runningQuestion];
         console.log(q);
         
-        question.innerHTML = "<p>"+ q.description +"</p>";
-        qImg.innerHTML = "<img src="+ q.imgSrc +">";
+        question.innerHTML = "<p>"+ q.title +"</p>";
+        description.innerHTML = "<p>"+ q.description +"</p>";
+        qImg.innerHTML = "<img src="+ q.image +">";
         choiceA.innerHTML = q.option1;
         choiceB.innerHTML = q.option2;
         choiceC.innerHTML = q.option3;
@@ -109,15 +110,14 @@ function mainQues(questions){
 
     // checkAnswer
     this.checkAnswer = function checkAnswer(answer){
-        console.log('inside checkanswer')
-        if( answer == '2'){
+        console.log(answer, "this is answer coming onClick")
+        if (answer === newQuestions[runningQuestion].correct){
             // answer is correct
             score++;
             console.log('answer is correct')
-            // change progress color to green
             answerIsCorrect();
-            
-        }else{
+        }
+        else{
             // answer is wrong
             // change progress color to red
             answerIsWrong();

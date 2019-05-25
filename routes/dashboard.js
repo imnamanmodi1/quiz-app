@@ -38,10 +38,10 @@ router.get('/create', function (req, res, next) {
     }
 });
 
-// renders displayQuiz on the pages
-router.get('/create/category', function (req, res, next) {
+// // renders displayQuiz on the pages
+// router.get('/create/category', function (req, res, next) {
 
-});
+// });
 
 // handles get request on dashboard/choose-quiz route
 router.get('/choose-quiz', (req, res, next) => {
@@ -71,16 +71,16 @@ router.post('/create', function (req, res, next) {
     req.body.category = upperCaseCategory;
     var stringAnswer;
     if (correctAnswer === "1") {
-        req.body.correct = req.body.option1
+        req.body.correct = '1';
     }
     else if(correctAnswer === "2") {
-        req.body.correct = req.body.option2
+        req.body.correct = '2';
     }
     else if(correctAnswer === "3") {
-        req.body.correct = req.body.option3
+        req.body.correct ='3';
     }
     else if(correctAnswer === "4") {
-        req.body.correct = req.body.option4
+        req.body.correct = '4';
     }
     // to handle & save the correct answer in string to match
     Quiz.create(req.body, (err)=>{

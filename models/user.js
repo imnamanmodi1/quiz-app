@@ -4,7 +4,6 @@ var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
 
 var userSchema = new Schema({
-	// _id: new mongoose.Types.ObjectId(),
     email: {
         type: String,
         required: [true, "Email is Required"],
@@ -18,7 +17,10 @@ var userSchema = new Schema({
         type: String,
         required: true,
 	},
-	score: Number,
+	score: {
+		type: Number,
+		default: 0,
+	},
 },{timestamps: true});
 
 userSchema.pre('save', function(next) {

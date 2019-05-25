@@ -59,6 +59,20 @@ body{
     font-size: 1.25em;
 }
 
+#description{
+    width:500px;
+    height : 125px;
+    position: absolute;
+    right:18px;
+    top:0;
+}
+
+#description p {
+    margin : 0 auto;
+    padding : 30px;
+    font-size: 1.25em;
+}
+
 #choices{
     width : 480px;
     position: absolute;
@@ -177,23 +191,23 @@ body{
   }
   
   @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;} 
-    to {bottom: 30px; opacity: 1;}
+    from {top: 0; opacity: 0;} 
+    to {top: 30px; opacity: 1;}
   }
   
   @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
+    from {top: 0; opacity: 0;}
+    to {top: 30px; opacity: 1;}
   }
   
   @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;} 
-    to {bottom: 0; opacity: 0;}
+    from {top: 30px; opacity: 1;} 
+    to {top: 0; opacity: 0;}
   }
   
   @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
+    from {top: 30px; opacity: 1;}
+    to {top: 0; opacity: 0;}
   }
 
   #wsnackbar{

@@ -54,7 +54,8 @@ table {
 
 body{
     background-color: #182C61;
-    margin-top: 10%;
+	margin-top: 10%;
+	color: white;
 
 }
 
@@ -79,15 +80,6 @@ h1{
 	font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
 	text-align: left;
     /* font-weight: 800; */
-}
-
-.row{
-	/* display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	justify-content: space-around;
-	max-width: 2rem; */
-	color: white;
-	padding-top: 2rem;
 }
 .up{
 	margin-top: 1.5rem;

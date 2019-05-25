@@ -10,6 +10,10 @@ var quizSchema = new Schema({
     // image: {
     //     data: Buffer, imageType: String, iName: String 
     // },
+    image: {
+        type: String,
+        default: "https://digitaliz.in/wp-content/uploads/2019/05/js.png", 
+    },
     description:{
         type: String,
         required: true

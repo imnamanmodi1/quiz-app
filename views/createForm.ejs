@@ -37,14 +37,22 @@
         <label class="form-label">Score for right answer</label>
         <input type="number" placeholder="points" name="score">
         <label class="form-label">Correct Option</label>
-        <div class="row">
-            <input class="first-row" type="radio" name="correct" value="1"><span class="up">1</span>
-            <input class="first-row"type="radio" name="correct" value="2"><span class="up">2</span>
-            <input class="first-row" type="radio" name="correct" value="3"><span class="up">3</span>
-            <input class="first-row" type="radio" name="correct" value="4"><span class="up">4</span>
-        </div>
-        <!-- <label class="form-label">Upload Image(if any)</label>
-            <input type="file" placeholder="upload" name="image"> -->
+        <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <input class="first-row" type="radio" name="correct" value="1"><span class="up">1</span>
+                  </div>
+                  <div class="col">
+                    <input class="first-row"type="radio" name="correct" value="2"><span class="up">2</span>
+                  </div>
+                  <div class="col">
+                    <input class="first-row" type="radio" name="correct" value="3"><span class="up">3</span>
+                  </div>
+                  <div class="col">
+                    <input class="first-row" type="radio" name="correct" value="4"><span class="up">4</span>
+                  </div>
+                </div>
+              </div>
         <button class="btn btn-success" type="submit">Submit Question</button>
     </form>
     </center>
