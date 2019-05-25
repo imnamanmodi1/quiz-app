@@ -14,7 +14,12 @@ const fetchAPI =(cb)=>{
 // renders dashboard
 router.get('/', function(req, res, next) {
     if(req.session && req.session.user){
-    res.render('dashboard')
+        User.find({}, (err, user) => {
+            if(err) return next(err)
+            req.user = user;
+            res.locals.user = user;
+            res.render('dashboard',{user: user})
+        })
     }
     else{
         res.send('first login');

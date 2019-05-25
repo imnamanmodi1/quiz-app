@@ -63,3 +63,8 @@ h1 {
 a {
   color: #00B7FF;
 }
+
+.table thead td, .table thead th {
+    border-width: 0 0 2px;
+    color: #fff;
+}
