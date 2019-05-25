@@ -9,12 +9,11 @@
 <body>
     <form method="POST" action="/users/<%= user._id %>/update">
         <h1>Edit</h1>
-        <div class="">
-            <input name="email" placeholder="Email" type="text">
-            <input name="username" placeholder="Username" type="text">
-            <input name="password" placeholder="Password" type="password">
+        <div class="container">
+            <input name="email" placeholder="Email" type="text" value="<%= user.email%>">
+            <input name="username" placeholder="Username" type="text" value="<%= user.username%>">
             <div>
-                <button class="btn" type="submit">Register</button>
+                <button class="btn" type="submit">Update</button>
             </div>
         </div>
         <div>
