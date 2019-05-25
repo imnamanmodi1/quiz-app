@@ -133,7 +133,7 @@ router.get('/settings/quiz-list', (req, res, next)=>{
       if(err) return next(err);
       Quiz.find({user: user._id}, (err, question)=>{
         console.log(question);
-        res.send(question)
+        res.render('userQuiz',{question: question})
       } )
     })
   }
