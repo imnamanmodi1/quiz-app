@@ -7,21 +7,22 @@
     <link rel="stylesheet" href="/stylesheets/userdisplay.css">
     <title>Document</title>
 </head>
+<% include partials/header %>
 <body>
-    <h1>User Information</h1>
     <% user.forEach(user =>{%>
     <div class="profile-card">
+            <h1>User Information</h1>
         <h3>
             <%= user.username %>
         </h3>
         <h3>
             <%= user.email %>
         </h3>
-        <a href="/users/<%=user._id %>/edit">
+        <a class="anchor" href="/users/<%=user._id %>/edit">
             Edit
         </a>
+        <% include partials/footer %>
     </div>
     <%})%>
-    <% include partials/footer %>
 </body>
 </html>

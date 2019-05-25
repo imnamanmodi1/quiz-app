@@ -1,3 +1,16 @@
 body{
     background-color: #182C61;
 }
+
+.profile-card{
+    text-align: center;
+    color: white;
+    padding-top: 2rem;
+}
+button{
+    text-align: center;
+    background: yellowgreen;
+}
+.anchor{
+    color: aqua;
+}
