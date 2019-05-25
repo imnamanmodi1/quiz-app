@@ -1,14 +1,15 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var User = require('./user');
 
 var quizSchema = new Schema({
     title:{
         type: String,
         required: true
     },
-    image: {
-        data: Buffer, imageType: String, iName: String 
-    },
+    // image: {
+    //     data: Buffer, imageType: String, iName: String 
+    // },
     description:{
         type: String,
         required: true
@@ -37,8 +38,13 @@ var quizSchema = new Schema({
     correct:{
         type: String,
         required: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        default: User._id
     }
-})
+},{timestamps: true});
 
 var Quiz = mongoose.model('Quiz', quizSchema)
 module.exports = Quiz;

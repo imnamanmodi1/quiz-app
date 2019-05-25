@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require('../models/user');
 var bcrypt = require('bcrypt');
 var userNameArr = [];
+var Quiz = require('../models/question')
 
 // rendered login form
 router.get('/login', function(req, res, next) {
@@ -126,5 +127,50 @@ router.get('/logout', (req, res)=>{
       res.render('loginForm')
   }
 })
+
+router.get('/settings/quiz-list', (req, res, next)=>{
+  if(req.session && req.session.user){
+    User.findById(req.session.user, (err, user)=>{
+      if(err) return next(err);
+      Quiz.find({user: user._id}, (err, question)=>{
+        console.log(question);
+        res.send(question)
+      } )
+    })
+  }
+})
+
+// editing the quiz route which renders edit form
+router.get('/settings/quiz-list/edit/:id', (req, res, next)=>{
+  var id = req.params.id;
+  // console.log(id, "id.....");
+  if(req.session && req.session.user){
+    Quiz.findById(id, (err, quiz) => {
+      // console.log(id,"id insider if")
+      console.log(quiz, "quiz check 1")
+      if(err) return next(err)
+      res.render('quiz-edit',{quiz: quiz})
+    })
+  }
+})
+
+
+// route to update the quiz in db
+router.post('/settings/quiz-list/update/:id', (req, res, next)=>{
+  var id = req.params.id;
+  // console.log(id, "id.....");
+  if(req.session && req.session.user){
+    Quiz.findByIdAndUpdate(id,req.body, {new: true},(err, quiz) => {
+      // console.log(id,"id insider if")
+      console.log(quiz, "quiz check 1")
+      if(err) return next(err)
+      res.send('edited')
+    })
+  }
+})
+
+
+
+
 
 module.exports = router;

@@ -53,7 +53,7 @@ table {
 
 
 body{
-    background-color: #303133;
+    background-color: #182C61;
     margin-top: 10%;
 
 }
@@ -63,7 +63,10 @@ input{
     height: 2rem;
     width: 30rem;
     margin: 1rem;
-    border-radius: 5%;
+	border-radius: 5%;
+	background-color: rgba(0,0,0,0.1);
+	color: white;
+	border: none;
 }
 h1{
     color:white;
@@ -79,9 +82,13 @@ h1{
 }
 
 .row{
-	display: grid;
+	/* display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	justify-content: space-around;
-	max-width: 2rem;
+	max-width: 2rem; */
 	color: white;
+	padding-top: 2rem;
+}
+.up{
+	margin-top: 1.5rem;
 }

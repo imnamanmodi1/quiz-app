@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Quiz = require('../models/question');
+var User = require('../models/user');
 var fetch = require('node-fetch');
 
 // fetching all categories in an Array
@@ -20,10 +21,17 @@ router.get('/', function(req, res, next) {
     }
 });
 
+
 // renders quiz form
 router.get('/create', function (req, res, next) {
     if(req.session && req.session.user){
-    res.render('createForm')
+        User.findById(req.session.user,(err, user) => {
+            if(err) return next(err)
+            req.user = user;
+            res.locals.user = user;
+            console.log(user,"....usern")
+            res.render('createForm', {user: user})
+        })
     }
     else{
         res.send('first login');
@@ -56,6 +64,7 @@ router.get('/:category/start', (req,res, next) => {
 
 // handles quiz creation on dashboard/create route
 router.post('/create', function (req, res, next) {
+    console.log(req.body)
     var correctAnswer = req.body.correct;
     var upperCaseCategory = req.body.category.toLowerCase();
     console.log(upperCaseCategory);
@@ -79,6 +88,23 @@ router.post('/create', function (req, res, next) {
         res.redirect('/dashboard/create')
     })
 });
+
+
+// exports.userSession = (req, res, next)=>{
+//     if(req.session && req.session.user){
+//         Users.findById(req.session.user, (err, user)=>{
+//             if(err) return next(err)
+//             req.user = user;
+//             res.locals.user = user;
+//             next()
+//         })
+//     }
+//     else{
+//         req.user = null;
+//         res.locals.user = null;
+//         next()
+//     }
+// }
 
 
 

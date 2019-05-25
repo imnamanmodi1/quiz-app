@@ -4,6 +4,7 @@ var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
 
 var userSchema = new Schema({
+	// _id: new mongoose.Types.ObjectId(),
     email: {
         type: String,
         required: [true, "Email is Required"],

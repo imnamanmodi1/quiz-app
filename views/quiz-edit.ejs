@@ -11,23 +11,22 @@
 </head>
 <body>
     <center>
-    <form action="/dashboard/create" method="POST">
+    <form action="/users/settings/quiz-list/update/<%= quiz._id%>" method="POST">
         <h1>Create Your Quiz</h1>
         <label class="form-label">Title</label>
-        <input type="text" placeholder="Enter Question title" name="title">
+        <input type="text" placeholder="Enter Question title" name="title" value="<%= quiz.title%>">
         <label class="form-label">Description</label>
-        <input type="text" placeholder="Enter Question Description" name="description">
+        <input type="text" placeholder="Enter Question Description" name="description" value="<%= quiz.description%>">
         <label class="form-label">Option 1</label>
-        <input type="text" placeholder="Enter Option 1" name="option1">
+        <input type="text" placeholder="Enter Option 1" name="option1" value="<%= quiz.option1%>">
         <label class="form-label">Option 2</label>
-        <input type="text" placeholder="Enter Option 2" name="option2">
+        <input type="text" placeholder="Enter Option 2" name="option2" value="<%= quiz.option2%>">
         <label class="form-label">Option 3</label>
-        <input type="text" placeholder="Enter Option 3" name="option3">
+        <input type="text" placeholder="Enter Option 3" name="option3" value="<%= quiz.option3%>">
         <label class="form-label">Option 4</label>
-        <input type="text" placeholder="Enter Option 4" name="option4">
+        <input type="text" placeholder="Enter Option 4" name="option4" value="<%= quiz.option4%>">
         <label class="form-label">Category</label>
-        <input type="text" placeholder="choose category" name="category" list="tags">
-        <input type="hidden" name="user" value="<%= user._id %>"
+        <input type="text" placeholder="choose category" name="category" list="tags" value="<%= quiz.category%>">
         <datalist id="tags">
             <option value="Javascript"></option>
             <option value="WordPress"></option>
@@ -35,7 +34,7 @@
             <option value="Sports"></option>
         </datalist>
         <label class="form-label">Score for right answer</label>
-        <input type="number" placeholder="points" name="score">
+        <input type="number" placeholder="points" name="score" value="<%= quiz.points%>">
         <label class="form-label">Correct Option</label>
         <div class="row">
             <input class="first-row" type="radio" name="correct" value="1"><span class="up">1</span>
